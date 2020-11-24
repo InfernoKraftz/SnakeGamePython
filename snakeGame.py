@@ -37,6 +37,10 @@ def snakegame():
 
     while not game_over:
         while game_end == True:
+            font_style = pygame.font.SysFont("Helvetica", 25)
+            mesg = font_style.render("Press Enter to play again.", True, redcolor)
+            dis.blit(mesg, [display_width / 3.5, display_height / 3])
+            
             score = Length_of_snake - 1
             score_font = pygame.font.SysFont("Helvetica", 35)
             value = score_font.render("Your Score: " + str(score), True, whitecolor)
@@ -46,6 +50,9 @@ def snakegame():
                 if event.type == pygame.QUIT:
                     game_over = True
                     game_end = False
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        snakegame()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
